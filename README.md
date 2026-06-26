@@ -270,15 +270,26 @@ At the time of writing, physical hardware testing was pending due to board avail
 
 ```
 .
-├── Core/
-│   ├── Inc/
-│   └── Src/
-│       ├── main.c
-│       ├── stm32g0xx_it.c
-│       └── ...
-├── README.md
-└── STM32CubeIDE project files
+├── Src/
+│   ├── main.c
+│   ├── syscalls.c
+│   └── sysmem.c
+├── Startup/
+│   └── startup_stm32g070rbtx.s
+├── .cproject
+├── .project
+├── .gitignore
+├── STM32G070RBTX_FLASH.ld
+└── README.md
 ```
+
+### Project Organization
+
+- **Src/** – Contains the application source code and system support files.
+- **Startup/** – Contains the startup assembly file responsible for MCU initialization and vector table setup.
+- **STM32G070RBTX_FLASH.ld** – Linker script defining the memory layout of the STM32G070RB.
+- **.project** and **.cproject** – STM32CubeIDE project configuration files.
+- **README.md** – Project documentation describing the design, implementation, and assumptions.
 
 ---
 
