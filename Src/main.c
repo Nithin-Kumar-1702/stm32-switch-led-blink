@@ -46,11 +46,11 @@ int main(void)
 
     NVIC_EnableIRQ(EXTI4_15_IRQn);
 
-    TIM3->PSC = 15999;
-    TIM3->ARR = 499;
-    TIM3->DIER |= (1<<0);
+    TIM3->PSC = 15999;        // one-time: 1ms tick base, regardless of state
+    TIM3->DIER |= (1<<0);     // one-time: enable update interrupt
     NVIC_EnableIRQ(TIM3_IRQn);
-    TIM3->CR1 |= (1<<0);
+
+    set_blink_state(current_state);   // apply initial state (0 = off) -> stops timer, forces LED off
 
     for(;;)
         __WFI();
